@@ -10,8 +10,8 @@
     "paths": {
       "@controllers/*": ["src/controllers/*"],
       "@models/*": ["src/models/*"],
-      "@services/*": ["src/services/*"]
-      // Add other aliases as needed
+      "@services/*": ["src/services/*"],
+      "@middlewares/*": ["src/middlewares/*"]
     }
   },
   "include": ["src/**/*"],
