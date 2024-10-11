@@ -10,6 +10,7 @@ export interface IUser extends Document {
   avatarUrl?: string;
   bankNumber?: string;
   referralCode?: string;
+  tierId?: string;
   referredUser?: mongoose.Schema.Types.ObjectId;
   ticketsAvailable: number;
   raffleParticipation: {
@@ -38,8 +39,7 @@ const UserSchema: Schema<IUser> = new mongoose.Schema(
       type: String,
       required: function () {
         // Password is required only if the user is not authenticated via OAuth
-        console.log(this.socialMediaId,'sodfdsfdf')
-        return !this.socialMediaId; // Make it required only if googleId is not present
+        return !this.socialMediaId; // Make it required only if socialMediaId is not present
       },
       minlength: [6, "Password must be at least 6 characters"],
     },
@@ -53,6 +53,7 @@ const UserSchema: Schema<IUser> = new mongoose.Schema(
     bankNumber: String,
     referralCode: String,
     referredUser: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    tierId: {type: mongoose.Schema.Types.ObjectId, ref: "UserMembership"},
     ticketsAvailable: { type: Number, default: 0 },
     raffleParticipation: [
       {

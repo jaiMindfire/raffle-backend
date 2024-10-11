@@ -1,6 +1,7 @@
 import mongoose, { Schema, Document } from "mongoose";
 
 export interface IUserMembership extends Document {
+  _id: string;
   tier: mongoose.Schema.Types.ObjectId;
   upgradeHistory: Date[];
   expirationDate: Date;
